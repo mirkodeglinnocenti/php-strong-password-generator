@@ -6,15 +6,23 @@ var_dump($password_length);
 
 $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
 
-$password = [];
+$array_password = [];
 
-for ($i = 0; $i < $password_length; $i++){
+function generatePassword ($password_length, $array_password, $characters) {
 
-    $random_character = substr($characters, rand(0, strlen($characters) - 1), 1);
-    $password[] = $random_character;
-    var_dump($password);
+    for ($i = 0; $i < $password_length; $i++){
+
+        $random_character = substr($characters, rand(0, strlen($characters) - 1), 1);
+        $array_password[] = $random_character;
+        
+    }
+    // var_dump(array_password);
+    // $test = implode(array_password);
+    return $array_password;
 }
 
+$password = implode(generatePassword ($password_length, $array_password, $characters));
+var_dump($password);
 
 ?>
 
@@ -40,6 +48,8 @@ for ($i = 0; $i < $password_length; $i++){
             </div>
 
         </form>
+
+        <p><?php echo $password ?></p>
 
     </main>
     
