@@ -2,27 +2,13 @@
 
 $password_length = isset($_GET['inputNumber']) ? $_GET['inputNumber'] : '';
 
-var_dump($password_length);
+// var_dump($password_length);
 
 $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
 
 $array_password = [];
 
-function generatePassword ($password_length, $array_password, $characters) {
-
-    for ($i = 0; $i < $password_length; $i++){
-
-        $random_character = substr($characters, rand(0, strlen($characters) - 1), 1);
-        $array_password[] = $random_character;
-        
-    }
-    // var_dump(array_password);
-    // $test = implode(array_password);
-    return $array_password;
-}
-
-$password = implode(generatePassword ($password_length, $array_password, $characters));
-var_dump($password);
+include 'functions.php';
 
 ?>
 
@@ -38,18 +24,26 @@ var_dump($password);
 <body>
     <main class="container py-5">
 
+        <h1 class="py-3">Generatore di Password</h1>
+
         <form class="row g-3" action="" method="GET">
 
-            <div class="col-auto">
-                <input type="number" class="form-control" name="inputNumber" id="inputNumber" placeholder="Password">
+            <div class="col-auto d-flex gap-3 align-items-center">
+                <span class="col-auto">Lunghezza password:</span>
+                <input type="number" class="form-control" name="inputNumber" id="inputNumber">
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">Genera Password</button>
+                <button type="submit" class="btn btn-primary">Genera Password</button>
             </div>
 
         </form>
 
-        <p><?php echo $password ?></p>
+        <div class="py-3">
+            <h3>Password Generata</h3>
+            <p>Lunghezza password: <?php echo $password_length ?></p>
+            <p><?php echo $password ?></p>
+        </div>
+            
 
     </main>
     
