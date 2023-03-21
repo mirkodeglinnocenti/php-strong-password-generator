@@ -1,6 +1,6 @@
 <?php
 
-$password_length = $_GET['inputNumber'];
+$password_length = isset($_GET['inputNumber']) ? $_GET['inputNumber'] : '';
 
 var_dump($password_length);
 
